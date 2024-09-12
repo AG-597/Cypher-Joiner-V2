@@ -1,0 +1,1 @@
+just `token` format, do NTO include email or password
