@@ -3,5 +3,8 @@
     "Nickname": {
         "Change": true,
         "name": ".gg/csolve"
+    },
+     "CSolver": {
+        "API-Key": "https://csolver.xyz"
     }
 }
