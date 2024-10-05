@@ -294,14 +294,20 @@ def join(token):
     else:
         log.fail(f"Failed To Join --> {name} --> {str(r.json())}")
         
-if __name__ =="__main__":
+if __name__ == "__main__":
     with open('./data/tokens.txt', 'r') as f:
         tokens = f.readlines()
-        token = random.choice(tokens)
+    
     try:
         os.system('cls')
     except:
         os.system('clear')
-    t = threading.Thread(target=join, args=(token))
-    t.start()
-    t.join()
+
+    threads = []
+    for token in tokens:
+        t = threading.Thread(target=join, args=(token,))
+        threads.append(t)
+        t.start()
+
+    for t in threads:
+        t.join()
