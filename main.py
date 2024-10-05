@@ -17,8 +17,8 @@ with open('./data/proxies.txt', 'r') as f:
     
 proxy = random.choice(proxies)
 
-def solve(rqData, sitekey):
-    csolver = Solver('CV3')
+def solve(key, rqData, sitekey):
+    csolver = Solver(key)
     st = time.time()
     while True:
         sol = csolver.hcaptcha(
@@ -99,8 +99,8 @@ def Xprops(ua):
         "browser": "Chrome",
         "device": "",
         "system_locale": "en-US",
-        "browser_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
-        "browser_version": "129.0.0.0",
+        "browser_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "browser_version": "124.0.0.0",
         "os_version": "10",
         "referrer": "https://discord.com/channels/@me",
         "referring_domain": "discord.com",
@@ -208,6 +208,7 @@ def join(token):
     inv = config['Invite']
     changeNick = config['Nickname']['Change']
     nick = config['Nickname']['name']
+    apiKey = config['CSolver']['API-Key']
     
     st = time.time()
     name = Name(token)
@@ -266,7 +267,7 @@ def join(token):
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
             'user-agent': ua,
-            'x-captcha-key': solve(rqData, sitekey),
+            'x-captcha-key': solve(apiKey, rqData, sitekey),
             'x-captcha-rqtoken': rqToken,
             'x-context-properties': Context(inv),
             'x-debug-options': 'bugReporterEnabled',
